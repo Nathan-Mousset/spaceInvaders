@@ -65,8 +65,12 @@ public void deplacerVaisseauVersLaDroite() {
 		vaisseau.seDeplacerVersLaDroite();
 }
 public void deplacerVaisseauVersLaGauche() {
-	if (vaisseau.abscisseLaPlusAGauche()< 0) vaisseau.seDeplacerVersLaGauche();
+	if (vaisseau.abscisseLaPlusAGauche() > 0) vaisseau.seDeplacerVersLaGauche();
 	
+}
+public void positionnerUnNouveauVaisseau(Dimension dimension, Position position) {
+	positionnerUnNouveauVaisseau(dimension.longueur(), dimension.hauteur(),
+											position.abscisse(), position.ordonnee());
 }
 
 
