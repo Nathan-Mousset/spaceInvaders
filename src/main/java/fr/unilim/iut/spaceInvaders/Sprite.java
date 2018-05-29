@@ -1,5 +1,7 @@
 package fr.unilim.iut.spaceInvaders;
 
+import fr.unilim.iut.spaceInvaders.Sprite.Direction;
+
 public abstract class Sprite {
 
 	protected Position origine;
@@ -50,14 +52,6 @@ public abstract class Sprite {
 		   this.origine.changerOrdonnee(y);
 	   }
 
-	public void seDeplacerVersLaDroite() {
-		this.origine.changerAbscisse(this.origine.abscisse() + vitesse);
-	}
-
-	public void seDeplacerVersLaGauche() {
-		this.origine.changerAbscisse(this.origine.abscisse() - vitesse);
-	}
-
 	public int hauteur() {
 		return this.dimension.hauteur();
 	}
@@ -65,5 +59,35 @@ public abstract class Sprite {
 	public int longueur() {
 		return this.dimension.longueur();
 	}
+	public void deplacerVersLeHaut() {
+		this.origine.changerOrdonnee(this.origine.ordonnee() - vitesse);
+	}
+	public void deplacerVerticalementVers(Direction direction) {
+		this.origine.changerOrdonnee(this.origine.ordonnee() + direction.valeur()*vitesse);
+	}	
+	 public enum Direction {
+		  
+	     HAUT (1),
+	     BAS (-1),
+	     GAUCHE (-1),
+	     DROITE (1),
+	  
+	     HAUT_ECRAN(-1),
+	     BAS_ECRAN(1);
+	   
+	     private int valeur;
+	  
+	    private Direction(int valeur) {
+		   this.valeur = valeur;
+	   }
+	
+	   public int valeur() {
+		  return this.valeur;
+	  }
+	   
+   } 
+	 public void deplacerHorizontalementVers(Direction direction) {
+			this.origine.changerAbscisse(this.origine.abscisse() + direction.valeur()*vitesse);
+		}
 
 }

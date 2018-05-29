@@ -1,5 +1,6 @@
 package fr.unilim.iut.spaceInvaders;
 
+import fr.unilim.iut.spaceInvaders.Sprite.Direction;
 import moteurjeu.Commande;
 import moteurjeu.Jeu;
 import utils.DebordementEspaceJeuException;
@@ -62,7 +63,7 @@ private boolean estDansEspaceJeu(int x, int y) {
 }
 public void deplacerVaisseauVersLaDroite() {
 	if (vaisseau.abscisseLaPlusADroite() < (longueur - 1)) {
-		vaisseau.seDeplacerVersLaDroite();
+		vaisseau.deplacerHorizontalementVers(Direction.DROITE);
 		if (estDansEspaceJeu(vaisseau.abscisseLaPlusADroite(), vaisseau.ordonneeLaPlusHaute())) {
 			vaisseau.positionner(longueur - vaisseau.longueur(), vaisseau.ordonneeLaPlusHaute());
 		}
@@ -71,7 +72,7 @@ public void deplacerVaisseauVersLaDroite() {
 
 public void deplacerVaisseauVersLaGauche() {
 	if (0 < vaisseau.abscisseLaPlusAGauche())
-		vaisseau.seDeplacerVersLaGauche();
+		vaisseau.deplacerHorizontalementVers(Direction.GAUCHE);
 	if (estDansEspaceJeu(vaisseau.abscisseLaPlusAGauche(), vaisseau.ordonneeLaPlusHaute())) {
 		vaisseau.positionner(0, vaisseau.ordonneeLaPlusHaute());
 	}
@@ -138,6 +139,10 @@ public void tirerUnMissile(Dimension dimensionMissile, int vitesseMissile) {
 		   throw new MissileException("Pas assez de hauteur libre entre le vaisseau et le haut de l'espace jeu pour tirer le missile");
 						
 	   this.missile = this.vaisseau.tirerUnMissile(dimensionMissile,vitesseMissile);
+}
+public void deplacerMissile() {
+	missile.deplacerVerticalementVers(Direction.HAUT_ECRAN);
+	
 }
 
 

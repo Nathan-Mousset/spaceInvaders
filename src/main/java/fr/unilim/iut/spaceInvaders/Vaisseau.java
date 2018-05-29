@@ -1,5 +1,6 @@
 package fr.unilim.iut.spaceInvaders;
 
+import fr.unilim.iut.spaceInvaders.Sprite.Direction;
 import utils.HorsEspaceJeuException;
 import utils.MissileException;
 
@@ -25,6 +26,9 @@ private Position calculerLaPositionDeTirDuMissile(Dimension dimensionMissile) {
 	Position positionOrigineMissile = new Position(abscisseOrigineMissile, ordonneeeOrigineMissile);
 	return positionOrigineMissile;
 }
+
+
+
 }
 	
 	
