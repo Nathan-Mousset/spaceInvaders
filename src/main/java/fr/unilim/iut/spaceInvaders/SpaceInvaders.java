@@ -15,6 +15,7 @@ public class SpaceInvaders implements Jeu {
     int hauteur;
     Vaisseau vaisseau;
     Missile missile;
+	
     
     public SpaceInvaders(int longueur, int hauteur) {
 	   this.longueur = longueur;
@@ -115,6 +116,9 @@ public void evoluer(Commande commandeUser) {
       tirerUnMissile(new Dimension(Constante.MISSILE_LONGUEUR, Constante.MISSILE_HAUTEUR),
 				Constante.MISSILE_VITESSE);
   }
+  if ( aUnMissile()) {
+	  deplacerMissile();
+  }
 
 }
 
@@ -142,7 +146,15 @@ public void tirerUnMissile(Dimension dimensionMissile, int vitesseMissile) {
 }
 public void deplacerMissile() {
 	missile.deplacerVerticalementVers(Direction.HAUT_ECRAN);
+	if (estDansEspaceJeu(missile.abscisseLaPlusAGauche(), missile.ordonneeLaPlusBasse()))
+		missile = null;
 	
+}
+public boolean aUnmissile() {
+return missile != null;
+}
+public Missile recupererMissile() {
+	return this.missile;
 }
 
 
